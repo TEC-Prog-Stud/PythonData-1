@@ -2,6 +2,8 @@
 
 
 def main():
+    name = input("What country are you from? ")
+    print("I have heard that", name , "is a beautiful country.")
     # Enter you solution here
 
 
