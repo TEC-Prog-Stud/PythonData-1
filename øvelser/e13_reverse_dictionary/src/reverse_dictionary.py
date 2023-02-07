@@ -1,7 +1,24 @@
 #!/usr/bin/env python3
 
 def reverse_dictionary(d):
-    return {}
+    rd = {}
+    # for key, values in d.items():
+
+    #     for v in values:
+    #         rd[v] = []
+        
+    # for key, values in d.items():
+    #     for v in values:
+    #         rd[v].append(key)
+
+    for key, values in d.items():
+        for v in values:
+            if v not in rd.keys():
+                rd[v] = [key]
+            else:
+                rd[v] += [key]
+
+    return rd
 
 def main():
     pass
