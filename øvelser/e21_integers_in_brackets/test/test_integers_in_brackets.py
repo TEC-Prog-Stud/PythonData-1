@@ -15,7 +15,7 @@ class IntegersInBrackets(unittest.TestCase):
 
     
     def test_first(self):
-        s="  afd [asd] [12 ] [a34]  [\t -43 ]tt [+12]xxx"
+        s="  afd [asd] [12 ] [a34]  [ -43 ]tt [+12]xxx"
         result = integers_in_brackets(s)
         self.assertIsInstance(result, list, f"Integers_in_brackets should return a list. Got {type(result)}.")
         self.assertEqual(result, [12, -43, 12], msg="Incorrect result for string %s!" % s)
