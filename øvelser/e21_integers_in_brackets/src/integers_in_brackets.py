@@ -16,7 +16,7 @@ import re
 
 def integers_in_brackets(s):
     
-    regex = r"\[\s?([+-]?\d+)\s?\]"
+    regex = r"\[\s*([+-]?\d+)\s*\]"
     m = re.findall(regex, s)
     return [int(tal) for tal in m]
 
