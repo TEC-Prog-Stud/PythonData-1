@@ -26,8 +26,7 @@ def main():
         res = summary(filename)
         if res:
             sum_, avg, stddev = res
-            print(
-                f'File: {filename} Sum: {sum_:.6f} Average: {avg:.6f} Stddev: {stddev:.6f}')
+            print(f'File: {filename} Sum: {sum_:.6f} Average: {avg:.6f} Stddev: {stddev:.6f}')
 
 if __name__ == "__main__":
     main()

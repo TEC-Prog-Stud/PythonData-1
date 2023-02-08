@@ -40,7 +40,7 @@ class FileCount(unittest.TestCase):
                              msg="Wrong number of calls to function 'file_count' for %i command line parameters!" % n)
         result = get_stdout().split('\n')
         for i, line in enumerate(result):
-            self.assertEqual(line.strip(), "0\t0\t0\tfile%i" % i,
+            self.assertEqual(line.strip(), "0 \t 0 \t 0 \t file%i" % i,
                              msg="Wrong result on line %i!" % i)
         sys.argv = orig_argv
 
