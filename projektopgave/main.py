@@ -91,12 +91,10 @@ def distance_over_time_between_two_points(points):
         totaldistance += a['delta_distance']
     print(f"\n\nTotal Time {totalTime}, Total Distance {totaldistance}")
 
-    print(f"Idle {idleTime / totalTime:.2%}, Walk {walkTime / totalTime:.2%}, Run {runTime / totalTime:.2%}")
-
-    print("Run: ")
-    print("walk: ")
-    print("Idle: ")
-    print("Total: ")
+    print(f'\n\n\tmeters, seconds, % of time')
+    print(f'Run:\t{runDistance:.1f}\t{runTime}\t{runTime/totalTime:.1%}')
+    print(f'Walk:\t{walkDistance:.1f}\t{walkTime}\t{walkTime/totalTime:.1%}')
+    print(f'Stand:\t{idleDistance:.1f}\t{idleTime}\t{idleTime/totalTime:.1%}')
 
 
 
