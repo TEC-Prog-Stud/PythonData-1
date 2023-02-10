@@ -165,7 +165,8 @@ def længdeoghastigheder(points):
     totalruntime = runsec/totaltime *100
     totalwalktime = walksec/totaltime * 100
     totalideltime = idlesec/totaltime * 100
-    totaltimeprecent = totalruntime + totalwalktime + totalideltime 
+    totaltimeprecent = totalruntime + totalwalktime + totalideltime
+    pp = pprint.PrettyPrinter(compact=True, width=60, depth=4)
     pp.pprint(f"Run: {runmeter} {runsec} {totalruntime}%")
     pp.pprint(f"walk: {walkmeter} {walksec} {totalwalktime}%")
     pp.pprint(f"idle: {idlemeter} {idlesec} {totalideltime}%")
