@@ -17,6 +17,7 @@ def file_count(filename):
 def main():
     for filename in sys.argv[1:]:
         linecount, wordcount, charcount = file_count(filename)
+        
         print(linecount,'\t',wordcount,'\t', charcount,'\t',filename)
 
 if __name__ == "__main__":
