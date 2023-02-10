@@ -13,7 +13,7 @@ def pace_to_velocity(pace):
 
 
 # this is a function to get all the data from the file and making it easier to read
-def distance_over_time_between_two_points(points):
+def distanceTime(points):
     lines = []
     for i, p in enumerate(points[1:]):
             # Get previous point
@@ -33,7 +33,7 @@ def distance_over_time_between_two_points(points):
             'veloicty'          : v,
         }
         lines.append(line)
-        # Print results
+        # Print lines
     print(lines)
 
     # Variables
@@ -77,8 +77,8 @@ def distance_over_time_between_two_points(points):
     print(f'Stand:\t{idleDistance:.1f}\t{idleTime}\t{idleTime/totalTime:.1%}')
     print(f'Total:\t{totaldistance:.1f}\t{totalTime}\t{totalTime/totalTime:.0%}')
 
+# did some work on assignment 6 but couldnt complete it
 def ControlPoints(points):
-    l0 = 0
     l1 = 1
     times =[]
     # Iterate through the control points csv file
@@ -104,16 +104,16 @@ def ControlPoints(points):
 def main():
     #variable with the relative file path to a .FIT file
     fname = "projektopgave\data\hok_klubmesterskab_2022\CA8D1347.FIT"
-    #Reading the FIT file
+    #returning the specified number of bytes from the file into the points variable
     points = read.read_points(fname)
     #priting the length of points
     print(len(points))
     #printing the number 300 of the list of points
     print(points[300])
 
-    ## calling my functions
+    #calling my functions
     print(pace_to_velocity(10))
-    distance_over_time_between_two_points(points)
+    distanceTime(points)
 
 # if name is main execute main function
 if __name__ == "__main__":
