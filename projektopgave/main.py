@@ -95,6 +95,7 @@ def distance_over_time_between_two_points(points):
     print(f'Run:\t{runDistance:.1f}\t{runTime}\t{runTime/totalTime:.1%}')
     print(f'Walk:\t{walkDistance:.1f}\t{walkTime}\t{walkTime/totalTime:.1%}')
     print(f'Stand:\t{idleDistance:.1f}\t{idleTime}\t{idleTime/totalTime:.1%}')
+    print(f'Total:\t{totaldistance:.1f}\t{totalTime}\t{totalTime/totalTime:.1%}')
 
 
 
