@@ -26,7 +26,7 @@ def read_csv(points):
         t = postkontroller[l1]['timestamp'] - postkontroller[l0]['timestamp']
         l0 += 1
         l1 += 1
-        print(t)
+        # print(t)
         time.append(t)
         
     st_1 = [p for p in points if p['timestamp'].astimezone() < postkontroller[1]['timestamp'] ]
@@ -34,7 +34,7 @@ def read_csv(points):
     postkontroller[1]['timestamp'], st_1[-1]
     b = 0
     for a in st_1:
-        print(f"(Taler: {b}, Latitude: {a['latitude']}, Longtitude {a['longitude']}, TimeStamp: {a['timestamp']})")
+        # print(f"(Taler: {b}, Latitude: {a['latitude']}, Longtitude {a['longitude']}, TimeStamp: {a['timestamp']})")
         b += 1
     # print(st_1)
 
@@ -58,17 +58,56 @@ def distance_over_time_between_two_points(points):
         lines.append(line)
     print(lines)
 
+    walkTime = 0
+    runTime = 0
+    idleTime = 0
+    walkDistance = 0
+    runDistance = 0
+    idleDistance = 0
+    totalTime = 0
+    totaldistance = 0
+    totalWalk = []
+    totalRun = []
+    totalIdle = []
     for a in lines:
-        print(f"start: {a['start']}, end: {a['end']}, dt: {a['delta_time']}, dd: {a['delta_distance']}, Veolicty: {a['veloicty']}")
+        # print(f"Delta Time {a['delta_time']}, Delta Distance {a['delta_distance']}, Veloicty {a['veloicty']}")
+        if a['veloicty'] < 0.33333:
+            idleTime += a['delta_time']
+            idleDistance += a['delta_distance']
+            print("står stille","\n", "deltatime: ",idleTime, "deltadistance:",idleDistance)
+            totalIdle.append((idleTime, idleDistance))
+        elif a['veloicty'] < 1.666667:
+            walkTime += a['delta_time']
+            walkDistance += a['delta_distance']
+            print("Går","\n", "deltatime: ",walkTime, "deltadistance:",walkDistance)
+            totalWalk.append((walkTime, walkDistance))
+        else:
+            runTime += a['delta_time']
+            runDistance += a['delta_distance']
+            print("Løber","\n", "deltatime: ",runTime, "deltadistance:",runDistance)
+            totalRun.append((runTime, runDistance))
+
+        totalTime += a['delta_time']
+        totaldistance += a['delta_distance']
+    print(f"\n\nTotal Time {totalTime}, Total Distance {totaldistance}")
+
+    print(f"Idle {idleTime / totalTime:.2%}, Walk {walkTime / totalTime:.2%}, Run {runTime / totalTime:.2%}")
+
+    print("Run: ")
+    print("walk: ")
+    print("Idle: ")
+    print("Total: ")
+
 
 
 def main():
     fname = "projektopgave\data\hok_klubmesterskab_2022\CA8D1347.FIT"
     points = read.read_points(fname)
-    print(len(points))
-    print(points[300])
+    # print(len(points))
+    # print(points[300])
     print(pace_to_velocity(10))
-    read_csv(points)
+    # read_csv(points)
+    distance_over_time_between_two_points(points)
     pass
 
 
