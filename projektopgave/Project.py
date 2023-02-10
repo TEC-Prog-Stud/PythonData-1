@@ -76,32 +76,27 @@ def read_laps_and_points(filename: str):
     return laps_data, points_data
 
 def KontrolTider():
-    with open('PythonData-1\projektopgave\data\hok_klubmesterskab_2022\kontroltider.csv', 'r',
+    with open('projektopgave\data\hok_klubmesterskab_2022\kontroltider.csv', 'r',
         encoding='utf-8', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         postkontroller = [{'nr': row['nr'],'timestamp': datetime.fromisoformat(row['timestamp'])}for row in reader]
     return postkontroller
 
+# Opgave 6 - bliv ikke færdig
 def delstrækning(postkontroller, points):
     strærkninger = []
     point = points
-    print(len(point))
-    print(len(postkontroller))
     totaldd = 0
 
     for i, time in enumerate(postkontroller[:-1]):
         strærkninger = ([p for p in point 
                          if p['timestamp'].astimezone() > postkontroller[i]['timestamp'] 
                          and p['timestamp'].astimezone() < postkontroller[i+1]['timestamp']])
-        print("længde af stærkninger", len(strærkninger))
         for længde in strærkninger:
             længdep = strærkninger[-1]                # previous_pointd
             dd = distance((længde['latitude'], længde['longitude']),
                           (længdep['latitude'], længdep['longitude'])).meters
-            print("dd", dd)
             totaldd += dd
-
-    print("totaldd", totaldd)
     return strærkninger
 
 # Opgave 1
@@ -137,7 +132,6 @@ def længdeoghastigheder(points):
     idlesec = 0
     totaltime = 0
     totalmeter = 0
-    print(len(points))
     for i, p in enumerate(points[1:]):
         # bemærk at i starter på 0 selv om vi slicer med [1:]
         pp = points[i]                # previous_pointd
@@ -156,6 +150,7 @@ def længdeoghastigheder(points):
         lines.append(line)
         
         # Check at what speed you are moving
+        # V is speed
         if v > 1.6666667:
             runmeter += dd
             runsec += dt
@@ -171,32 +166,47 @@ def længdeoghastigheder(points):
     totalwalktime = walksec/totaltime * 100
     totalideltime = idlesec/totaltime * 100
     totaltimeprecent = totalruntime + totalwalktime + totalideltime 
-    pp = pprint.PrettyPrinter(compact=True, width=60, depth=2)
-    pp = pprint.PrettyPrinter(compact=True, width=60, depth=4)
-    pp.pprint(f"Run: {runmeter} {runsec} {totalruntime}", "%")
-    pp.pprint(f"walk: {walkmeter} {walksec} {totalwalktime}","%")
-    pp.pprint(f"idle: {idlemeter} {idlesec} {totalideltime}","%")
-    pp.pprint(f"Total: {totalmeter} {totaltime} {totaltimeprecent}"," %")
+    pp.pprint(f"Run: {runmeter} {runsec} {totalruntime}%")
+    pp.pprint(f"walk: {walkmeter} {walksec} {totalwalktime}%")
+    pp.pprint(f"idle: {idlemeter} {idlesec} {totalideltime}%")
+    pp.pprint(f"Total: {totalmeter} {totaltime} {totaltimeprecent}%")
     return lines
 
 # initialize main program which it used to call other functions.
 def main():
     #Make a var which stores the route to the FIT file
-    filename = 'PythonData-1\projektopgave\data\hok_klubmesterskab_2022\CA8D1347.FIT'
+    filename = 'projektopgave\data\hok_klubmesterskab_2022\CA8D1347.FIT'
+ 
     # Calls the method read_laps_and_points to get 2 list which conntains the decribt FIT file
     laps, points = read_laps_and_points(filename)
     postkontroller = KontrolTider()
     strærkninger = delstrækning(postkontroller, points)
-    længderoghastigheder = længdeoghastigheder(strærkninger, points)
-    # pp.pprint(len(laps))
-    # pp.pprint(len(points))
-    # pp.pprint(len(strærkninger))
-    # pp.pprint(len(længderoghastigheder))
-    # pp.pprint(laps)
-    # pp.pprint(points)
-    # pp.pprint(strærkninger[1])
-    # pp.pprint(strærkninger[-1])
-    # pp.pprint(længderoghastigheder)
+ 
+    #opgave 1
+    #Skal indstatte to tal som er mere en 0
+    print("Opgave 1")
     pace2velocity()
+    
+    # Opgave 2
+    # viser at jeg har indlæst file
+    print("Længde af listerne:")
+    print("Laps", len(laps))
+    print("Points", len(points))
+    # print("Stærkninger", len(strærkninger))
+
+    # bliver brugt til at se hvad der ligger i listne
+    # pp.pprint(laps[1])
+    # pp.pprint(points[1])
+    # pp.pprint(strærkninger[1])
+    
+    #Opgave 5
+    print("Opgave 5")
+    længderoghastigheder = længdeoghastigheder(points)
+    
+    # If you want to se what in længdeoghastigheder
+    # pp.pprint(len(længderoghastigheder))
+    # pp.pprint(længderoghastigheder)
+
+
 if __name__ == "__main__":
     main()
