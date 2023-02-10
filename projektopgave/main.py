@@ -14,7 +14,6 @@ def pace_to_velocity(pace):
 
 # this is a function to get all the data from the file and making it easier to read
 def distance_over_time_between_two_points(points):
-
     lines = []
     for i, p in enumerate(points[1:]):
             # Get previous point
@@ -78,7 +77,29 @@ def distance_over_time_between_two_points(points):
     print(f'Stand:\t{idleDistance:.1f}\t{idleTime}\t{idleTime/totalTime:.1%}')
     print(f'Total:\t{totaldistance:.1f}\t{totalTime}\t{totalTime/totalTime:.0%}')
 
+def ControlPoints(points):
+    l0 = 0
+    l1 = 1
+    times =[]
+    # Iterate through the control points csv file
+    with open('data/hok_klubmesterskab_2022/kontroltider.csv', 'r', 
+            encoding='utf-8', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+            # Create a list of dictionaries, each containing a number and timestamp
+        postkontroller = [{ 'nr':row['nr'], 
+            'timestamp': datetime.datetime.fromisoformat(row['timestamp']) } 
+          for row in reader]
 
+    #Loop through postkontroller
+    while l1 < len(postkontroller):
+        #Create list from points before current timestamp
+        st_1 = [p for p in points if p['timestamp'].astimezone() < postkontroller[l1]['timestamp'] ]
+        postkontroller[l1]['timestamp'],st_1[-1]
+        #adding timestamp, min and max to times list
+        times.append((postkontroller[l1]['timestamp'], st_1[0], st_1[1]))
+        #Increment l1 to move forward in loop
+        l1 += 1
+        
 
 def main():
     #variable with the relative file path to a .FIT file
