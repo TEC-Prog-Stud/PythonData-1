@@ -7,6 +7,7 @@ except ModuleNotFoundError:
     import triangle
 
 def main():
+    pass
     # Call the functions from here
 
 if __name__ == "__main__":
