@@ -3,7 +3,11 @@
 import math
 
 def solve_quadratic(a, b, c):
-    return (0,0)
+    d= math.sqrt(b*b -4*a*c)
+    positive = (-b + d) / (2*a)
+    negative = (-b -d) / (2*a)
+
+    return (positive,negative)
 
 
 def main():

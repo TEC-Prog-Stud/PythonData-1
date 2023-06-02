@@ -10,6 +10,7 @@
 # by using a main function as here.
 
 def main():
+    print("Hello, world!")
     # Enter your code here, this is the correct indentation
 
 # This makes sure the main function is not called immediatedly
