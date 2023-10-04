@@ -4,10 +4,15 @@ import re
 
 
 def file_listing(filename="src/listing.txt"):
-    return []
+    res = []
+    f = open(filename, "r")
+    lines = f.readlines()
+    for line in lines:
+        
+    return res
 
 def main():
-    pass
+    print(file_listing())
 
 if __name__ == "__main__":
     main()

@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 
+def posFunc(x):
+    if x > 0:
+        return True
+    else: 
+        return False
+
 def positive_list(L):
-    return []
+    return list(filter(posFunc, L))
 
 def main():
-    pass
+    print(positive_list([2,-2,0,1,-7]))
 
 if __name__ == "__main__":
     main()
