@@ -2,13 +2,21 @@
 
 import re
 
+def mapFunc(n: str):
+    if n.isnumeric():
+        return int(n)
+    else: return n
 
 def file_listing(filename="src/listing.txt"):
     res = []
     f = open(filename, "r")
-    lines = f.readlines()
-    for line in lines:
-        
+    pattern = r'(\d+)\s(\w{3})\s+(\d+)\s(\d+):(\d+)\s(.*?)$'
+    for line in f:
+      match = re.search(pattern, line)
+      groups = match.groups()
+      res.append(tuple(map(mapFunc, groups)))
+    f.close()
+
     return res
 
 def main():

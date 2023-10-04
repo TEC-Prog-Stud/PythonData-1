@@ -17,7 +17,8 @@ def red_green_blue(filename="src/rgb.txt"):
             ans += f"{match} "
         ans = ans[:-1]
         res.append(ans)
-    
+    f.close()
+
     return res
 
 

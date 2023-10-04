@@ -13,6 +13,7 @@ def file_count(filename):
             words.append(word)
         for char in line:
             chars.append(char)
+    f.close()
     
     return (len(lines), len(words), len(chars))
 

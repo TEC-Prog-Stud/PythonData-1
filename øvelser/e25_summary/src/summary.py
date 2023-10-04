@@ -24,7 +24,8 @@ def summary(filename):
     for line in lines:
         std += (line-avg)**2
     std = math.sqrt(std/(len(lines)-1))
-        
+    f.close()
+    
     return (sum(lines),avg,std)
 
 def main():
