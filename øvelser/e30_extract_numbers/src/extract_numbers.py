@@ -14,11 +14,11 @@ def tryConvert(s):
     try:
         ans = int(s)
         return ans
-    except Exception as e:
+    except Exception:
         try:
             ans = float(s)
             return ans
-        except Exception as e:
+        except Exception:
             return None
 
 def main():
