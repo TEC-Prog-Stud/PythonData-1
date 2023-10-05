@@ -1,7 +1,25 @@
 #!/usr/bin/env python3
 
 def extract_numbers(s):
-    return []
+    words = s.split()
+    res = []
+    for word in words:
+        ans = tryConvert(word)
+        if ans:
+            res.append(ans)
+            
+    return res
+
+def tryConvert(s):
+    try:
+        ans = int(s)
+        return ans
+    except Exception as e:
+        try:
+            ans = float(s)
+            return ans
+        except Exception as e:
+            return None
 
 def main():
     print(extract_numbers("abd 123 1.2 test 13.2 -1"))
