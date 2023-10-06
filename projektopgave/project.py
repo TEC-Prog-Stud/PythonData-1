@@ -289,7 +289,7 @@ def printLegRelation(legp2p, legPoints, birdp2p): #Opgave 12
   distRel = getRelations(legp2p, legPoints)
   realV = getLegAverage(legPoints)
   birdV = getBirdLegAverage(birdp2p)
-  Vrel = getRelationofRealandBirdVelocity(legp2p, birdp2p)
+  Vrel = getRelationofRealandBirdVelocity(legPoints, birdp2p)
   
   dist = list(np.cumsum(list(round(rel[1]*100,2) for rel in distRel.values())))
   realV = list(round(realv[0],2) for realv in realV.values())
