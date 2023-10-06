@@ -35,15 +35,15 @@ from geopy.distance import distance
 #     Da i starter på nul, for jeg hvert punkt fra 0 til nedstsidste,
 #     punktet p er hvert af punkterne fra andet til sidste
 
-for i, p in enumerate(punkter[1:]):
-    # previus point
-    pp = punkter[i]
+# for i, p in enumerate(punkter[1:]):
+#     # previus point
+#     pp = punkter[i]
 
-    dt = (p['timestamp'] - pp['timestamp']).seconds
-    dd = distance( (pp['latitude'], pp['longitude']), (p['latitude'], p['longitude'])).meters
-    v = dd/dt
-    print(f"p: {p}")
-    print(f"pp: {pp}")
-    print(f"dt: {dt}")
-    print(f"dd: {dd}")
+#     dt = (p['timestamp'] - pp['timestamp']).seconds
+#     dd = distance( (pp['latitude'], pp['longitude']), (p['latitude'], p['longitude'])).meters
+#     v = dd/dt
+#     print(f"p: {p}")
+#     print(f"pp: {pp}")
+#     print(f"dt: {dt}")
+#     print(f"dd: {dd}")
 
